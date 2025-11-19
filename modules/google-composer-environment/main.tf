@@ -33,7 +33,7 @@ resource "google_composer_environment" "this" {
 
   config {
     software_config {
-      image_version = var.image_version
+      image_version            = var.image_version
       airflow_config_overrides = var.airflow_config_overrides
       pypi_packages            = var.pypi_packages
       env_variables            = var.env_variables
@@ -47,8 +47,10 @@ resource "google_composer_environment" "this" {
     }
 
     dynamic "workloads_config" {
-      # Only include the workloads_config block if var.workloads_config is not empty
-      for_each = length(keys(var.workloads_config)) > 0 ? [1] : []
+      for_each = anytrue([
+        for v in values(var.workloads_config) : v != null
+      ]) ? [1] : []
+
       content {
         dynamic "scheduler" {
           for_each = try(var.workloads_config.scheduler, null) == null ? [] : [1]

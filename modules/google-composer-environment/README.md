@@ -21,7 +21,7 @@ This module provisions a Google Cloud Composer environment.
 | network | The Compute Engine network to be used for machine communications. | `string` | `null` | no |
 | project\_id | The ID of the project in which the resource belongs. | `string` | n/a | yes |
 | pypi\_packages | Custom Python Package Index (PyPI) packages to be installed. | `map(string)` | `{}` | no |
-| region | The region where the Composer environment will be created. | `string` | `"us-central1"` | no |
+| region | The region where the Composer environment will be created. | `string` | n/a | yes |
 | service\_account | The Google Cloud Platform Service Account to be used by the node VMs. Must have roles/composer.worker. | `string` | `null` | no |
 | storage\_bucket | Name of an existing Cloud Storage bucket to be used by the environment. If null, Composer creates one. | `string` | `null` | no |
 | subnetwork | The Compute Engine subnetwork to be used for machine communications. | `string` | `null` | no |

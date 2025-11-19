@@ -43,7 +43,7 @@ spec:
       - name: region
         description: The region where the Composer environment will be created.
         varType: string
-        defaultValue: us-central1
+        required: true
       - name: labels
         description: User-defined labels for this environment.
         varType: map(string)
@@ -120,11 +120,17 @@ spec:
         varType: map(string)
         defaultValue: {}
       - name: kms_key_name
-        description: Customer-managed Encryption Key for the environment.
+        description: Customer-managed Encryption Key available through Google's Key Management Service. It must be the fully qualified resource name.
         varType: string
       - name: storage_bucket
         description: Name of an existing Cloud Storage bucket to be used by the environment. If null, Composer creates one.
         varType: string
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-cloud-storage//modules/simple_bucket
+              version: ">= 8.0"
+            spec:
+              outputExpr: name
     outputs:
       - name: airflow_uri
         description: The URI of the Apache Airflow Web UI hosted within this environment.

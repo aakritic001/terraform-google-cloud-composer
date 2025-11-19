@@ -27,7 +27,6 @@ variable "env_name" {
 variable "region" {
   type        = string
   description = "The region where the Composer environment will be created."
-  default     = "us-central1"
 }
 
 variable "labels" {
