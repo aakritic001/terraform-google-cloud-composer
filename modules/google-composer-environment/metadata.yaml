@@ -142,4 +142,21 @@ spec:
       - name: id
         description: The identifier for the Composer environment.
       - name: name
-        description: The name of the Composer environment.
+        description: The name of the Composer environment
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/composer.admin
+          - roles/iam.serviceAccountUser
+          - roles/storage.admin
+    services:
+      - composer.googleapis.com
+      - cloudresourcemanager.googleapis.com
+      - iam.googleapis.com
+      - serviceusage.googleapis.com
+      - storage.googleapis.com
+      - compute.googleapis.com
+    providerVersions:
+      - source: hashicorp/google
+        version: ">= 7.6, < 8"
