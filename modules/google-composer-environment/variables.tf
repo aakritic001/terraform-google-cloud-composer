@@ -43,7 +43,6 @@ variable "image_version" {
 variable "service_account" {
   type        = string
   description = "The Google Cloud Platform Service Account to be used by the node VMs. Must have roles/composer.worker."
-  default     = null
 }
 
 variable "environment_size" {
