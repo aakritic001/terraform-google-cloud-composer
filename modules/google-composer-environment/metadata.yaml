@@ -56,6 +56,7 @@ spec:
       - name: service_account
         description: The Google Cloud Platform Service Account to be used by the node VMs. Must have roles/composer.worker.
         varType: string
+        required: true
       - name: environment_size
         description: The environment size (ENVIRONMENT_SIZE_SMALL, ENVIRONMENT_SIZE_MEDIUM, ENVIRONMENT_SIZE_LARGE).
         varType: string
