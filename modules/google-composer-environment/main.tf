@@ -14,11 +14,24 @@
  * limitations under the License.
  */
 
+locals {
+  composer_service_account_roles = toset([
+    "roles/composer.worker",
+    "roles/logging.logWriter",
+    "roles/iam.serviceAccountUser",
+    "roles/serviceusage.serviceUsageAdmin",
+    "roles/storage.admin",
+  ])
+}
+
+resource "google_project_iam_member" "composer_sa_project_roles" {
+  for_each = local.composer_service_account_roles
+  project  = var.project_id
+  role     = each.value
+  member   = "serviceAccount:${var.service_account}"
+}
 
 resource "google_composer_environment" "this" {
-  provider = google-beta # Or google, depending on feature set needed
-
-
   name    = var.env_name
   project = var.project_id
   region  = var.region
