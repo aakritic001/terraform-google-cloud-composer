@@ -15,6 +15,8 @@
  */
 
 resource "google_composer_environment" "this" {
+  provider = google-beta
+
   name    = var.env_name
   project = var.project_id
   region  = var.region
