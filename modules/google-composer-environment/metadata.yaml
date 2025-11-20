@@ -54,7 +54,7 @@ spec:
         varType: string
         required: true
       - name: service_account
-        description: The Google Cloud Platform Service Account to be used by the node VMs. Must have roles/composer.worker.
+        description: The Google Cloud Platform Service Account to be used by the node VMs. This service account MUST have at least roles/composer.worker and roles/logging.logWriter in the target project. The deploying entity must have iam.serviceAccounts.actAs permission on this service account.
         varType: string
         required: true
       - name: environment_size
