@@ -1,5 +1,5 @@
 /**
- * Copyright 2021 Google LLC
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,25 +16,30 @@
 
 output "composer_environment_id" {
   description = "The identifier for the Composer environment."
-  value       = google_composer_environment.this.id
+  value       = module.cloud_composer_environment.id
 }
 
 output "composer_environment_name" {
   description = "The name of the Composer environment."
-  value       = google_composer_environment.this.name
+  value       = module.cloud_composer_environment.name
 }
 
 output "gke_cluster" {
   description = "The Kubernetes Engine cluster used to run this environment."
-  value       = google_composer_environment.this.config[0].gke_cluster
+  value       = module.cloud_composer_environment.gke_cluster
 }
 
 output "dag_gcs_prefix" {
   description = "The Cloud Storage prefix of the DAGs for this environment."
-  value       = google_composer_environment.this.config[0].dag_gcs_prefix
+  value       = module.cloud_composer_environment.dag_gcs_prefix
 }
 
 output "airflow_uri" {
   description = "The URI of the Apache Airflow Web UI hosted within this environment."
-  value       = google_composer_environment.this.config[0].airflow_uri
+  value       = module.cloud_composer_environment.airflow_uri
+}
+
+output "project_id" {
+  description = "Project id where composer environment is created."
+  value       = var.project_id
 }

@@ -40,6 +40,8 @@ spec:
         env_name:
           name: env_name
           title: Env Name
+          regexValidation: ^(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)$
+          validation: Env Name must contain only lowercase letters, numbers and hyphens.
         env_variables:
           name: env_variables
           title: Env Variables
@@ -49,6 +51,8 @@ spec:
         image_version:
           name: image_version
           title: Image Version
+          regexValidation: ^composer-(([0-9]+)(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-(([0-9]+)((\.[0-9]+)(\.[0-9]+)?)?(-build\.[0-9]+)?)$
+          validation: The image version must exactly match the format like this - composer-3-airflow-2.7.3.
         kms_key_name:
           name: kms_key_name
           title: Kms Key Name
@@ -79,3 +83,13 @@ spec:
         workloads_config:
           name: workloads_config
           title: Workloads Config
+    runtime:
+      outputs:
+        airflow_uri:
+          visibility: VISIBILITY_ROOT
+        composer_environment_id:
+          visibility: VISIBILITY_ROOT
+        dag_gcs_prefix:
+          visibility: VISIBILITY_ROOT
+        gke_cluster:
+          visibility: VISIBILITY_ROOT

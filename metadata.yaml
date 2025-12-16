@@ -29,4 +29,7 @@ spec:
     subBlueprints:
       - name: google-composer-environment
         location: modules/google-composer-environment
+    examples:
+      - name: google-composer-environment
+        location: examples/google-composer-environment
   interfaces: {}
