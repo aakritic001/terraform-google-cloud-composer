@@ -15,8 +15,7 @@
  */
 
 module "cloud_composer_environment" {
-  //source = "aakritic001/cloud-composer/google//modules/google-composer-environment"
-  source = "../../modules/google-composer-environment"
+  source = "aakritic001/cloud-composer/google//modules/google-composer-environment"
   
   env_name   = "example-composer-environment"
   project_id = var.project_id
